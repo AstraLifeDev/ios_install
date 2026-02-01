@@ -53,11 +53,10 @@
 		function download(){
 			if (step==2){
 				alert(`В следующем окне подтвердите установку AstraMobile с нашего сайта.`)
-				window.location='itms-services://?action=download-manifest&url=/getplist/'+mirror.value
+				window.location='itms-services://?action=download-manifest&url=https://astralifedev.github.io/ios_install/files/AstraMobile.plist'
 				dwn.innerHTML = "Повторно Установить AstraMobile"
 				act.innerHTML = "После установки AstraMobile выполните инструкции показанные на скринах для завершения установки."
 				instructions.style=""
-				instr1.style="display:none";
 				instr2.style="";
 				
 			}
