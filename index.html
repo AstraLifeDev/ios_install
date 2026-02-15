@@ -48,17 +48,27 @@
 		}
 	</style>
 	<script>
-		var step = 2;
 		
-		function download(){
+		function download(step){
 			if (step==2){
 				alert(`В следующем окне подтвердите установку AstraMobile с нашего сайта.`)
 				window.location='itms-services://?action=download-manifest&url=https://astralifedev.github.io/ios_install/files/AstraMobile.plist'
 				dwn.innerHTML = "Повторно Установить AstraMobile"
 				act.innerHTML = "После установки AstraMobile выполните инструкции показанные на скринах для завершения установки."
+				dwnHELP.style=""
 				instructions.style=""
 				instr2.style="";
+
 				
+			}else if (step == 3){
+				dwn.style="display:none;"
+				instr2.innerHTML = "Открыть инструкцию 2";
+				instr2.href = "https://teletype.in/@astra_life/astramobile_ios";
+				alert("Если данный метод не сработал даже после выполнения инструкции, то скорее всего бесплатный сертификат был отозван.")
+				alert("Сейчас вам буджет предложено скачать файл .ipa, используйте ПК для установки его на свое устройство")
+				alert("Подробности по кнопке \"Открыть инструкцию 2\"")
+				act.innerHTML = "После скачивания файла AstraMobile.ipa отправьте его на ваш ПК и следуйте инструкции ниже:"
+				window.location = "/ios_install/files/AstraMobile.ipa"
 			}
 		}
 	</script>
@@ -71,7 +81,8 @@
 			</div>
 			<div style="display:flex;flex-direction:column;gap:5px;justify-content:center;align-items:start;">
 				<h1 style="font-size:20px;">AstraMobile</h1>
-				<button id="dwn" onclick="download()">Установить</button>
+				<button id="dwn" onclick="download(2)">Установить</button>
+				<button id="dwnHELP" style="display:none;" onclick="download(3)">Не работает?</button>
 			</div>
 		</div>
 		<p id="act">Нажмите на кнопку что-бы установить AstraMobile</p>
@@ -81,7 +92,7 @@
 			<br>
 			<br>
 			
-			<a id="instr2" style="display:none;" href="/ios_install/files/1.jpg">Открыть инструкцию 2</a>
+			<a id="instr2" style="display:none;" href="/ios_install/files/1.jpg">Открыть инструкцию</a>
 			
 			<br>
 			<br>
