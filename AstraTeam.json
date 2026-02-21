@@ -14,7 +14,6 @@
     {
       "name": "AstraMobile",
       "bundleIdentifier": "com.astrateam.AstraMobile",
-      "marketplaceID": "",
       "developerName": "AstraTeam",
       "subtitle": "AstraLife on iOS.",
       "localizedDescription": "Port of AstraLife for iDevices.",
