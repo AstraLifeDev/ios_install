@@ -4,7 +4,6 @@
   "description": "",
   "iconURL": "https://astralifedev.github.io/ios_install/files/icon.png",
   "website": "https://astralife.top",
-  "patreonURL": "",
   "tintColor": "#212121",
   "featuredApps": [
     "com.astrateam.AstraMobile"
@@ -35,8 +34,7 @@
       "appPermissions": {
         "entitlements": [],
         "privacy": {}
-      },
-      "patreon": {}
+      }
     }
   ],
   "news": []
