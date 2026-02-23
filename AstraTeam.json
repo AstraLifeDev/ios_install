@@ -22,17 +22,19 @@
       "screenshots": [],
       "versions": [
         {
+          "version": "0.0.7",
+          "date": "2026-02-23T14:50:00+03:00",
+          "localizedDescription": null,
           "downloadURL": "https://astralifedev.github.io/ios_install/files/AstraMobile.ipa",
           "size": 5000000,
-          "version": "0.0.7",
           "buildVersion": "",
-          "date": "2026-02-18T05:37:00+03:00",
-          "localizedDescription": null,
           "minOSVersion": null
         }
       ],
       "appPermissions": {
-        "entitlements": [],
+        "entitlements": [
+          "com.apple.developer.kernel.increased-memory-limit"
+        ],
         "privacy": {}
       }
     }
