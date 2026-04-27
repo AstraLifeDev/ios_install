@@ -1,105 +1,161 @@
-<html>
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-	<title>AstraMobile</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<style>
-		@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-		*{
-			font-family: "Montserrat", sans-serif;
-			padding:0;
-			margin:0;
-		}
-		html,body{
-			width:100%;
-			height:100%;
-			display:flex;
-			background:#212121;
-		}
-		.cont{
-			width:100%;
-			height:100%;
-			color:white;
-			display:flex;
-			flex-direction:column;
-			align-items:center;
-			justify-content:center;
-			text-align:center;
-			gap:20px;
-			overflow-y:auto;
-		}
-		button,a,select{
-			padding-left:20px;
-			padding-right:20px;
-			padding-top:7px;
-			padding-bottom:7px;
-			border-radius:50px;
-			background:#0091ff;
-			border:none;
-			color:white;
-			font-weight:700;
-			font-size:15px;
-		}
-		button:active,a:active{
-			background:#01589b;
-		}
-		button:disabled,a:disabled{
-			background:#01589b;
-			color:gray;
-		}
-	</style>
-	<script>
-		
-		function download(step){
-			if (step==2){
-				alert(`В следующем окне подтвердите установку AstraMobile с нашего сайта.`)
-				window.location='itms-services://?action=download-manifest&url=https://ios.astralife.top/files/AstraMobile.plist'
-				dwn.innerHTML = "Повторно Установить AstraMobile"
-				act.innerHTML = "После установки AstraMobile выполните инструкции показанные на скринах для завершения установки."
-				dwnHELP.style=""
-				instructions.style=""
-				instr2.style="";
-
-				
-			}else if (step == 3){
-				dwn.style="display:none;"
-				instr2.innerHTML = "Открыть инструкцию 2";
-				instr2.href = "https://teletype.in/@astra_life/astramobile_ios";
-				alert("(1/3) Если данный метод не сработал даже после выполнения инструкции, то скорее всего бесплатный сертификат был отозван.")
-				alert("(2/3) Сейчас вам будет предложено скачать файл .ipa, используйте ПК для установки AstraMobile на ваше устройство")
-				alert("(3/3) Подробности по кнопке \"Открыть инструкцию 2\"")
-				act.innerHTML = "После скачивания файла AstraMobile.ipa отправьте его на ваш ПК и следуйте инструкции ниже:"
-				window.location = "/files/AstraMobile.ipa"
-				dwnHELP.innerHTML = "Скачать файл еще раз"
-			}
-		}
-	</script>
+  <meta charset="utf-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+  >
+  <link rel="icon" 
+    href="./files/icon.png" 
+    type="image/png">
+  <meta name="theme-color" content="#f3f7ff">
+  <title>AstraMobile</title>
+  <link rel="stylesheet" href="./styles.css">
 </head>
-<body>
-	<div class="cont">
-		<div style="display:flex;gap:10px;">
-			<div style="background:url('/files/icon.png') no-repeat;flex-shrink:0;background-size:contain;background-position:center;width:100px;height:100px;background-color:white;border-radius:15px">
-			
-			</div>
-			<div style="display:flex;flex-direction:column;gap:5px;justify-content:center;align-items:start;">
-				<h1 style="font-size:20px;">AstraMobile</h1>
-				<button id="dwn" onclick="download(2)">Установить</button>
-				<button id="dwnHELP" style="display:none;" onclick="download(3)">Не работает?</button>
-			</div>
-		</div>
-		<p id="act">Нажмите на кнопку что-бы установить AstraMobile</p>
-		<div id="instructions" style="display:none;">
-		
-			Инструкция:
-			<br>
-			<br>
-			
-			<a id="instr2" style="display:none;" href="/files/1.jpg">Открыть инструкцию</a>
-			
-			<br>
-			<br>
-			<b style="color:red;"></b>
-		</div>
-		
-	</div>
+<body data-phase="initial">
+  <main class="app-shell">
+    <section class="hero-panel">
+      <div class="hero-top">
+        <div class="app-icon-wrap">
+          <img src="./files/icon.png" alt="AstraMobile icon" class="app-icon">
+        </div>
+
+        <div class="hero-copy">
+          <span class="eyebrow">AstraTeam</span>
+          <h1>AstraMobile</h1>
+          <p class="hero-subtitle" id="appSubtitle">
+            Мобильная версия лаунчера AstraLife для устройств iOS и iPadOS.
+          </p>
+        </div>
+      </div>
+
+      <div class="hero-badges">
+        <span class="badge">iOS 15.0+</span>
+        <span class="badge">iPadOS 15.0+</span>
+      </div>
+    </section>
+
+    <section class="step-card step-card-primary" id="installPanel">
+      <div class="step-head">
+        <span class="step-tag">Шаг 1</span>
+        <span class="status-chip" id="statusPill">Готово к установке</span>
+      </div>
+
+      <h2>Запустите установку</h2>
+      <p class="step-copy" id="statusMessage">
+        Нажмите на кнопку ниже, чтобы открыть системную установку AstraMobile.
+      </p>
+
+      <button type="button" class="btn btn-primary" id="primaryAction">
+        Установить AstraMobile
+      </button>
+
+      <p class="inline-note" id="hostNotice">
+        Для прямой установки нужна опубликованная HTTPS-версия страницы.
+      </p>
+
+      <div class="detail-list">
+        <div class="detail-item">
+          <span class="detail-label">Версия</span>
+          <strong class="detail-value" id="versionValue">0.0.7</strong>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Обновлено</span>
+          <strong class="detail-value" id="dateValue">23 февраля 2026</strong>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Размер .ipa</span>
+          <strong class="detail-value" id="sizeValue">5 МБ</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="step-card" id="trustPanel" hidden>
+      <div class="step-head">
+        <span class="step-tag">Шаг 2</span>
+        <span class="status-chip status-chip-success">Доступно</span>
+      </div>
+
+      <h2>Подтвердите и доверьтесь профилю</h2>
+      <p class="step-copy" id="trustMessage">
+        После установки откройте инструкцию и разрешите профиль разработчика в настройках iOS.
+      </p>
+
+      <a
+        class="btn btn-secondary"
+        id="guideAction"
+        href="./files/1.jpg"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Открыть инструкцию
+      </a>
+
+      <figure class="guide-figure">
+        <img
+          src="./files/1.jpg"
+          alt="Пошаговая инструкция по разрешению профиля AstraMobile"
+          class="guide-image"
+        >
+      </figure>
+
+    </section>
+
+    <section class="step-card step-card-warn" id="fallbackPanel" hidden>
+      <div class="step-head">
+        <span class="step-tag">Шаг 3</span>
+        <span class="status-chip status-chip-warn" id="fallbackBadge">Резервный путь</span>
+      </div>
+
+      <h2>Если установка не сработала</h2>
+      <p class="step-copy" id="fallbackMessage">
+        Скачайте .ipa и выполните установку через ПК, если сертификат был отозван.
+      </p>
+
+      <button type="button" class="btn btn-primary btn-warn" id="secondaryAction">
+        Скачать .ipa
+      </button>
+
+      <a
+        class="btn btn-secondary"
+        id="articleLink"
+        href="https://teletype.in/@astra_life/astramobile_ios"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Открыть инструкцию для ПК
+      </a>
+    </section>
+  </main>
+
+  <div class="dialog-backdrop" id="dialogBackdrop" hidden>
+    <section
+      class="dialog-panel"
+      id="dialogPanel"
+      role="alertdialog"
+      aria-modal="true"
+      aria-labelledby="dialogTitle"
+      aria-describedby="dialogMessage"
+      tabindex="-1"
+    >
+      <div class="dialog-icon" id="dialogIcon" aria-hidden="true">
+        <span class="dialog-icon-core"></span>
+      </div>
+
+      <div class="dialog-copy">
+        <p class="dialog-eyebrow" id="dialogEyebrow">Уведомление</p>
+        <h2 class="dialog-title" id="dialogTitle">Подтвердите действие</h2>
+        <p class="dialog-message" id="dialogMessage"></p>
+        <ul class="dialog-list" id="dialogList" hidden></ul>
+      </div>
+
+      <button type="button" class="btn btn-primary dialog-confirm" id="dialogConfirm">
+        Продолжить
+      </button>
+    </section>
+  </div>
+
+  <script src="./app.js" defer></script>
 </body>
 </html>
