@@ -52,7 +52,7 @@
 		function download(step){
 			if (step==2){
 				alert(`В следующем окне подтвердите установку AstraMobile с нашего сайта.`)
-				window.location='itms-services://?action=download-manifest&url=https://astralifedev.github.io/ios_install/files/AstraMobile.plist'
+				window.location='itms-services://?action=download-manifest&url=https://ios.astralife.top/files/AstraMobile.plist'
 				dwn.innerHTML = "Повторно Установить AstraMobile"
 				act.innerHTML = "После установки AstraMobile выполните инструкции показанные на скринах для завершения установки."
 				dwnHELP.style=""
@@ -68,7 +68,7 @@
 				alert("(2/3) Сейчас вам будет предложено скачать файл .ipa, используйте ПК для установки AstraMobile на ваше устройство")
 				alert("(3/3) Подробности по кнопке \"Открыть инструкцию 2\"")
 				act.innerHTML = "После скачивания файла AstraMobile.ipa отправьте его на ваш ПК и следуйте инструкции ниже:"
-				window.location = "/ios_install/files/AstraMobile.ipa"
+				window.location = "/files/AstraMobile.ipa"
 				dwnHELP.innerHTML = "Скачать файл еще раз"
 			}
 		}
@@ -77,7 +77,7 @@
 <body>
 	<div class="cont">
 		<div style="display:flex;gap:10px;">
-			<div style="background:url('/ios_install/files/icon.png') no-repeat;flex-shrink:0;background-size:contain;background-position:center;width:100px;height:100px;background-color:white;border-radius:15px">
+			<div style="background:url('/files/icon.png') no-repeat;flex-shrink:0;background-size:contain;background-position:center;width:100px;height:100px;background-color:white;border-radius:15px">
 			
 			</div>
 			<div style="display:flex;flex-direction:column;gap:5px;justify-content:center;align-items:start;">
@@ -93,7 +93,7 @@
 			<br>
 			<br>
 			
-			<a id="instr2" style="display:none;" href="/ios_install/files/1.jpg">Открыть инструкцию</a>
+			<a id="instr2" style="display:none;" href="/files/1.jpg">Открыть инструкцию</a>
 			
 			<br>
 			<br>
