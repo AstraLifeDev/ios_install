@@ -4,7 +4,7 @@ const DEFAULT_METADATA = {
   subtitle: "Мобильная версия лаунчера AstraLife для устройств iOS и iPadOS.",
   website: "https://astralife.top",
   updatedAt: "2 мая 2026",
-  size: "5 МБ"
+  size: "10 МБ"
 };
 
 const STORAGE_KEY = "astraMobileInstallPhase";
