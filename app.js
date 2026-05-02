@@ -3,7 +3,7 @@ const DEFAULT_METADATA = {
   version: "0.0.7",
   subtitle: "Мобильная версия лаунчера AstraLife для устройств iOS и iPadOS.",
   website: "https://astralife.top",
-  updatedAt: "23 февраля 2026",
+  updatedAt: "2 мая 2026",
   size: "5 МБ"
 };
 
