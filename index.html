@@ -36,6 +36,10 @@
       </div>
     </section>
 
+    <p class="inline-note certificate-notice" id="certificateNotice">
+      Сертификат подписи временно недоступен. Прямая установка и подтверждение профиля отключены — используйте резервную загрузку .ipa ниже.
+    </p>
+
     <section class="step-card step-card-primary" id="installPanel">
       <div class="step-head">
         <span class="step-tag">Шаг 1</span>
@@ -58,15 +62,15 @@
       <div class="detail-list">
         <div class="detail-item">
           <span class="detail-label">Версия</span>
-          <strong class="detail-value" id="versionValue">0.0.7</strong>
+          <strong class="detail-value" id="versionValue"></strong>
         </div>
         <div class="detail-item">
           <span class="detail-label">Обновлено</span>
-          <strong class="detail-value" id="dateValue">18 июня 2026</strong>
+          <strong class="detail-value" id="dateValue"></strong>
         </div>
         <div class="detail-item">
           <span class="detail-label">Размер .ipa</span>
-          <strong class="detail-value" id="sizeValue">5 МБ</strong>
+          <strong class="detail-value" id="sizeValue"></strong>
         </div>
       </div>
     </section>
@@ -108,10 +112,25 @@
         <span class="status-chip status-chip-warn" id="fallbackBadge">Резервный путь</span>
       </div>
 
-      <h2>Если установка не сработала</h2>
+      <h2>Установка через ПК</h2>
       <p class="step-copy" id="fallbackMessage">
-        Скачайте .ipa и выполните установку через ПК, если сертификат был отозван.
+        Скачайте .ipa и выполните установку через ПК.
       </p>
+
+      <div class="detail-list" id="fallbackDetails" hidden>
+        <div class="detail-item">
+          <span class="detail-label">Версия</span>
+          <strong class="detail-value" id="fallbackVersionValue"></strong>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Обновлено</span>
+          <strong class="detail-value" id="fallbackDateValue"></strong>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Размер .ipa</span>
+          <strong class="detail-value" id="fallbackSizeValue"></strong>
+        </div>
+      </div>
 
       <button type="button" class="btn btn-primary btn-warn" id="secondaryAction">
         Скачать .ipa

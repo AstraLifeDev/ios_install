@@ -47,6 +47,10 @@
   min-width: 0;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 html,
 body {
   min-height: 100%;
@@ -286,6 +290,11 @@ a {
   transform: translateY(0);
 }
 
+.btn:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 .btn-primary {
   background: linear-gradient(180deg, #2d8cff 0%, var(--accent) 100%);
   color: var(--accent-contrast);
@@ -314,6 +323,19 @@ a {
 
 #hostNotice.is-visible {
   display: block;
+}
+
+.certificate-notice {
+  display: none;
+}
+
+.certificate-notice.is-visible {
+  display: block;
+  background: var(--warn-bg);
+  color: var(--warn-text);
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 600;
 }
 
 .guide-figure {

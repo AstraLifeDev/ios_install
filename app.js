@@ -7,6 +7,8 @@ const DEFAULT_METADATA = {
   size: "5 МБ"
 };
 
+const certificateAvailable = true;
+
 const STORAGE_KEY = "astraMobileInstallPhase";
 
 const state = {
@@ -69,6 +71,12 @@ document.addEventListener("DOMContentLoaded", () => {
   refs.dialogMessage = document.getElementById("dialogMessage");
   refs.dialogList = document.getElementById("dialogList");
   refs.dialogConfirm = document.getElementById("dialogConfirm");
+  refs.certificateNotice = document.getElementById("certificateNotice");
+  refs.installPanel = document.getElementById("installPanel");
+  refs.fallbackDetails = document.getElementById("fallbackDetails");
+  refs.fallbackVersionValue = document.getElementById("fallbackVersionValue");
+  refs.fallbackDateValue = document.getElementById("fallbackDateValue");
+  refs.fallbackSizeValue = document.getElementById("fallbackSizeValue");
 
   refs.primaryAction.addEventListener("click", handlePrimaryInstall);
   refs.secondaryAction.addEventListener("click", handleFallbackInstall);
@@ -78,12 +86,20 @@ document.addEventListener("DOMContentLoaded", () => {
     refs.hostNotice.classList.add("is-visible");
   }
 
+  if (!certificateAvailable) {
+    refs.certificateNotice.classList.add("is-visible");
+  }
+
   renderMetadata();
   renderPhase();
   loadMetadata();
 });
 
 async function handlePrimaryInstall() {
+  if (!certificateAvailable) {
+    return;
+  }
+
   state.phase = Math.max(state.phase, 2);
   persistPhase();
   renderPhase();
@@ -144,12 +160,39 @@ async function loadMetadata() {
 
 function renderMetadata() {
   refs.appSubtitle.textContent = state.metadata.subtitle;
-  refs.versionValue.textContent = state.metadata.version;
-  refs.dateValue.textContent = state.metadata.updatedAt;
-  refs.sizeValue.textContent = state.metadata.size;
+
+  if (certificateAvailable) {
+    refs.versionValue.textContent = state.metadata.version;
+    refs.dateValue.textContent = state.metadata.updatedAt;
+    refs.sizeValue.textContent = state.metadata.size;
+  } else {
+    refs.fallbackVersionValue.textContent = state.metadata.version;
+    refs.fallbackDateValue.textContent = state.metadata.updatedAt;
+    refs.fallbackSizeValue.textContent = state.metadata.size;
+  }
 }
 
 function renderPhase() {
+  if (!certificateAvailable) {
+    document.body.dataset.phase = "fallback";
+
+    refs.installPanel.hidden = true;
+    refs.trustPanel.hidden = true;
+    refs.fallbackPanel.hidden = false;
+    refs.fallbackDetails.hidden = false;
+
+    refs.statusPill.textContent = "Сертификат недоступен";
+    refs.statusMessage.textContent = "Прямая установка временно недоступна — используйте резервную загрузку .ipa.";
+
+    refs.fallbackMessage.textContent = "Скачайте .ipa и выполните установку через ПК. Сертификат подписи временно недоступен.";
+    refs.fallbackPanel.querySelector(".status-chip").textContent = "Активно";
+
+    return;
+  }
+
+  refs.installPanel.hidden = false;
+  refs.fallbackDetails.hidden = true;
+
   document.body.dataset.phase = PHASE_NAMES[state.phase] || PHASE_NAMES[1];
 
   refs.statusPill.textContent = STATUS_PILLS[state.phase] || STATUS_PILLS[1];
