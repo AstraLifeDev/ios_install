@@ -7,7 +7,7 @@ const DEFAULT_METADATA = {
   size: "5 МБ"
 };
 
-const certificateAvailable = true;
+const certificateAvailable = false;
 
 const STORAGE_KEY = "astraMobileInstallPhase";
 
